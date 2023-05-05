@@ -6,7 +6,7 @@
 #    By: rodro <rodro@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:24:11 by rofuente          #+#    #+#              #
-#    Updated: 2023/05/05 16:19:00 by rodro            ###   ########.fr        #
+#    Updated: 2023/05/05 17:48:30 by rodro            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,12 +71,14 @@ $(NAME): $(OBJ) $(LIBFT) $(MLX)
 clean:
 	$(RM) $(OBJ)
 	@make clean -C libft
+	@make clean -C mlx
 	@rm -rf $(OBJ_DIR)
 	@echo "$(R)All .o files removed$(DEF_COLOR)\n"
 
 fclean: clean
 	$(RM) $(NAME)
 	@make fclean -C libft
+	@make clean -C mlx
 	@rm -f $(OBJ_DIR)
 	@echo "$(R)Library .a file removed$(DEF_COLOR)\n"
 
