@@ -6,24 +6,50 @@ CFLAGS = -Wall -Wextra -Werror -I ./include -I ./ft_printf/include -I ./gnl/incl
 
 NAME = libft.a
 
+FT	=	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_split.c ft_tolower.c ft_toupper.c
+LST	=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
+MEM	=	ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c
+PUT	=	ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c
+STR	=	ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c
 FT_PRINTF	=	ft_printf.c ft_print_char.c ft_print_nbr.c
 GNL	=	get_next_line.c get_next_line_bonus.c get_next_line_utils.c get_next_line_utils_bonus.c
 
 
+SRC1_DIR	=	./ft/
+SRC2_DIR	=	./lst/
+SRC3_DIR	=	./mem/
+SRC4_DIR	=	./put/
+SRC5_DIR	=	./str/
 SRC6_DIR	=	./ft_printf/src/
 SRC7_DIR	=	./gnl/src/
-
+SRC1	=	$(addprefix $(SRC1_DIR), $(FT))
+SRC2	=	$(addprefix $(SRC2_DIR), $(LST))
+SRC3	=	$(addprefix $(SRC3_DIR), $(MEM))
+SRC4	=	$(addprefix $(SRC4_DIR), $(PUT))
+SRC5	=	$(addprefix $(SRC5_DIR), $(STR))
 SRC6	=	$(addprefix $(SRC6_DIR), $(FT_PRINTF))
 SRC7	=	$(addprefix $(SRC7_DIR), $(GNL))
 
 OBJ_DIR	=	./obj/
-OBJ_FILES	=	$(FT_PRINTF:.c=.o) $(GNL:.c=.o)
+OBJ_FILES	=	$(FT:.c=.o) $(LST:.c=.o) $(MEM:.c=.o) $(PUT:.c=.o) $(STR:.c=.o) $(FT_PRINTF:.c=.o) $(GNL:.c=.o)
 OBJ	=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
+
+#INCLUDE = libft.h ./ft_printf/ft_printf.h ./gnl/get_next_line.h ./gnl/get_next_line_bonus.h
 
 all: $(OBJ_DIR) $(NAME)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
+$(OBJ_DIR)%.o:$(SRC1_DIR)%.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(OBJ_DIR)%.o:$(SRC2_DIR)%.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(OBJ_DIR)%.o:$(SRC3_DIR)%.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(OBJ_DIR)%.o:$(SRC4_DIR)%.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(OBJ_DIR)%.o:$(SRC5_DIR)%.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 $(OBJ_DIR)%.o:$(SRC6_DIR)%.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 $(OBJ_DIR)%.o:$(SRC7_DIR)%.c
