@@ -6,7 +6,7 @@
 #    By: rodro <rodro@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:24:11 by rofuente          #+#    #+#              #
-#    Updated: 2023/05/08 11:17:48 by rodro            ###   ########.fr        #
+#    Updated: 2023/05/08 12:02:32 by rodro            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,7 @@ LIB	=	ar rcs
 RM	=	rm -f
 
 CC	=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/ -I ./mlx/
-DEBUG	=	-g3 -fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/ -I ./mlx/ -g3 -fsanitize=address
 
 NAME	=	so_long
 
