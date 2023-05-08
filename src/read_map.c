@@ -83,7 +83,6 @@ void	ft_read_map(t_game *game, char *file)
 	if (fd <= 0)
 		ft_error("Failed to open file\n");
 	line = get_next_line(fd);
-	ft_printf("hola\n");
 	if (!line)
 		ft_error("Empty map\n");
 	game->map.height = 0;

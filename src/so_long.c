@@ -6,7 +6,7 @@
 /*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:22:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/05 16:23:51 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/08 11:21:12 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	start_game(t_game *game, char *file)
 {
 	game->player.steps = 0;
 	game->map.n_position = 0;
-	ft_printf("caca\n");
 	ft_read_map(game, file);
 	/* game->mlx = mlx_init();
 	if (!game->mlx)
