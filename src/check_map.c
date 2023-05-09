@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 13:59:03 by rodro             #+#    #+#             */
-/*   Updated: 2023/05/05 16:03:53 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/09 13:48:07 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static void	ft_check_diferent(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] != '0' || line[i] != '1' || line[i] != 'E'
-			|| line[i] != 'C' || line[i] != 'P')
+		if (line[i] != '0' && line[i] != '1' && line[i] != 'E'
+			&& line[i] != 'C' && line[i] != 'P')
 			ft_error("Found unrecognized element\n");
 		i++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/05 16:05:13 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/09 16:58:56 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 /* ---------- LIBRERIAS ---------- */
 # include "../libft/ft_printf/include/ft_printf.h"
 # include "../libft/gnl/include/get_next_line.h"
+# include "../mlx/mlx.h"
 # include <stdlib.h>
 # include <unistd.h>
-# include <mlx.h>
+/* # include <mlx.h> */
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
@@ -85,7 +86,7 @@ int	check_path(t_game *game);
 
 /* FT_NO_NL.C */
 char	*ft_strdup_no_nl(const char *s1);
-char	*ft_strjoin_no_nl(char const *s1, char const *s2);
+char	*ft_strjoin_no_nl(char *s1, char *s2);
 
 /* FT_SLEN.C */
 int	ft_slen(char *s);

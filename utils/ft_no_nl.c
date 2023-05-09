@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_no_nl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 13:31:30 by rodro             #+#    #+#             */
-/*   Updated: 2023/05/08 12:14:24 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/09 13:34:56 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,14 @@ char	*ft_strdup_no_nl(const char *s1)
 	return (dst);
 }
 
-char	*ft_strjoin_no_nl(char const *s1, char const *s2)
+char	*ft_strjoin_no_nl(char *s1, char *s2)
 {
 	char	*r;
 	int		x;
 	int		y;
 
+	if (!s2)
+		return (s1);
 	r = malloc(sizeof(char) * (ft_strlen((char *)s1)
 				+ ft_strlen((char *)s2)) + 1);
 	if (!r)

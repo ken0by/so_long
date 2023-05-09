@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:16:58 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/28 13:22:53 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:29:06 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,31 +49,27 @@ int	check_newline(char *s, int y)
 	return (0);
 }
 
-/* char	*ft_strjoin(char *s, char *b)
+char	*ft_fill_s(char *s, char *b)
 {
-	char	*r;
-	int		x;
-	int		y;
+	int	i;
+	char *a;
 
+	a = NULL;
 	if (!s)
-		r = malloc(sizeof(char) * (check_newline(b, 1) + 1));
+	{
+		a = malloc(sizeof(char) * ft_strlen(b) + 1);
+		i = 0;
+		while (b[i])
+		{
+			a[i] = b[i];
+			i++;
+		}
+		a[i] = '\0';
+		return (a);
+	}
 	else
-		r = malloc(sizeof(char) * (check_newline(s, 1)
-					+ check_newline(b, 1) + 1));
-	if (!r)
-		return (ft_free(r, NULL));
-	x = 0;
-	y = 0;
-	if (s)
-		while (s[y])
-			r[x++] = s[y++];
-	y = 0;
-	while (b[y])
-		r[x++] = b[y++];
-	r[x] = '\0';
-	ft_free(s, b);
-	return (r);
-} */
+		return (ft_strjoin(s, b));
+}
 
 char	*ft_newline(char *s, char **line)
 {

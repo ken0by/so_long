@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:22:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/08 11:21:12 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/09 17:05:15 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	start_game(t_game *game, char *file)
 	game->player.steps = 0;
 	game->map.n_position = 0;
 	ft_read_map(game, file);
-	/* game->mlx = mlx_init();
+	game->mlx = mlx_init();
 	if (!game->mlx)
 		ft_error("Failed to open MLX\n");
 	game->win = mlx_new_window(game->mlx, game->map.width * 110,
 		game->map.height * 110, "Save Rick!");
 	if (!game->win)
-		ft_error("Failure to load window\n"); */
+		ft_error("Failure to load window\n");
 
 }
 

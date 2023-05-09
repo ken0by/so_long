@@ -40,13 +40,14 @@ void	ft_cpymap(t_game *game)
 	k = 0;
 	while (i < game->map.height)
 	{
-		len = ft_strlen(game->map.cpy[i]) + 1;
+		len = game->map.width + 1;
 		game->map.cpy[i] = ft_calloc(len, sizeof(char));
 		if (!game->map.cpy[i])
 			return ;
 		j = 0;
 		while (j < game->map.width)
 			game->map.cpy[i][j++] = game->map.line[k++];
+		game->map.cpy[i][j] = '\0';
 		i++;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:14:41 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/08 12:08:48 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/09 13:26:35 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*get_next_line(int fd);
 
 /* ---------- UTILS ---------- */
 char	*get_next_line(int fd);
-//char	*ft_strjoin(char *s1, char *s2);
+char	*ft_fill_s(char *s, char *b);
 char	*ft_newline(char *s, char **line);
 char	*ft_copy(char *s, char *aux);
 char	*ft_free(char *s, char *b);

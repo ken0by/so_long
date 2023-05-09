@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:17:16 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/08 12:08:32 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/09 13:26:50 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_read(int fd, char *s)
 			break ;
 		}
 		b[x] = '\0';
-		s = ft_strjoin(s, b);
+		s = ft_fill_s(s, b);
 		if (!s)
 			return (NULL);
 		if (check_newline(s, 0) == 1)

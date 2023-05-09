@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rodro <rodro@student.42.fr>                +#+  +:+       +#+         #
+#    By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:24:11 by rofuente          #+#    #+#              #
-#    Updated: 2023/05/08 12:02:32 by rodro            ###   ########.fr        #
+#    Updated: 2023/05/09 17:04:43 by rofuente         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ LIB	=	ar rcs
 RM	=	rm -f
 
 CC	=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/ -I ./mlx/ -g3 -fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/ -I ./mlx
+MLX_FLAGS	=	-Lmlx -lmlx -framework OpenGL -framework AppKit
+DEBUG	=	-g3 -fsanitize=address
 
 NAME	=	so_long
 
@@ -23,7 +25,6 @@ UTILS	=	ft_no_nl.c ft_slen.c
 
 SRC_DIR	=	./src/
 SRCU_DIR = ./utils/
-SRCS	=	$(addprefix $(SRC_DIR), $(SS))
 
 OBJ_DIR	=	./obj/
 OBJ_FILES	=	$(SS:.c=.o) $(UTILS:.c=.o)
@@ -34,7 +35,6 @@ LIBFT = $(LIBFT_PATH)libft.a
 
 MLX_PATH = mlx/
 MLX = $(MLX_PATH)libmlx.a
-#INCLUDE = include/
 
 ##########COLORES##########
 DEF_COLOR = \033[0;39m
@@ -64,7 +64,7 @@ $(OBJ_DIR)%.o:$(SRCU_DIR)%.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJ) $(LIBFT) $(MLX)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) $(MLX_FLAGS) $(DEBUG) -o $(NAME)
 	@echo "\n$(G)Basic library compiled!$(DEF_COLOR)-> $@\n"
 
 clean:
