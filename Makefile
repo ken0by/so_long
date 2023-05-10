@@ -6,7 +6,7 @@
 #    By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:24:11 by rofuente          #+#    #+#              #
-#    Updated: 2023/05/09 17:04:43 by rofuente         ###   ########.fr        #
+#    Updated: 2023/05/10 17:03:04 by rofuente         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ DEBUG	=	-g3 -fsanitize=address
 
 NAME	=	so_long
 
-SS	=	so_long.c read_map.c ft_messeg.c check_map.c check_path.c
+SS	=	so_long.c read_map.c ft_messeg.c check_map.c check_path.c put_elem.c
 UTILS	=	ft_no_nl.c ft_slen.c
 
 SRC_DIR	=	./src/

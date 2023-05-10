@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/09 16:58:56 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:52:51 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,14 @@ typedef struct s_game
 	int			img_width;
 	void		*mlx;
 	void		*win;
+	void		*img;
 	t_player	player;
 	t_map		map;
 }	t_game;
 
 /* ---------- FUNCIONES ---------- */
 
+/* ----- SRC ----- */
 /* READ_MAP.C */
 void	ft_read_map(t_game *game, char *file);
 
@@ -84,6 +86,10 @@ void	ft_check_map(t_game *game);
 /* CHECK_PATH.C */
 int	check_path(t_game *game);
 
+/* PUT_ELEM.C */
+void	put_elem(t_game *game, char *path_wall, char *path_floor);
+
+/* ----- UTILS ----- */
 /* FT_NO_NL.C */
 char	*ft_strdup_no_nl(const char *s1);
 char	*ft_strjoin_no_nl(char *s1, char *s2);
