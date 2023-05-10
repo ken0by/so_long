@@ -37,7 +37,7 @@
 # define ARROW_RIGHT	124
 
 # define DESTROY 17
-# define XPM_PATH	"../xpm"
+# define XPM_PATH	"./xpm/"
 
 /* ---------- STRUCTS ---------- */
 typedef struct s_player
