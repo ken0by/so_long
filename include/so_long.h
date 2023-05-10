@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/10 16:52:51 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/10 19:43:10 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 # define SO_LONG_H
 
 /* ---------- LIBRERIAS ---------- */
+# include "../libft/include/libft.h"
 # include "../libft/ft_printf/include/ft_printf.h"
 # include "../libft/gnl/include/get_next_line.h"
 # include "../mlx/mlx.h"
 # include <stdlib.h>
 # include <unistd.h>
-/* # include <mlx.h> */
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
@@ -36,10 +36,14 @@
 # define ARROW_LEFT		123
 # define ARROW_RIGHT	124
 
+# define DESTROY 17
+# define XPM_PATH	"../xpm"
+
 /* ---------- STRUCTS ---------- */
 typedef struct s_player
 {
 	int		steps;
+	int		steps_flag;
 	int		pos;
 	void	*player_front;
 	void	*player_back;
@@ -56,7 +60,9 @@ typedef struct s_map
 	char	*line;
 	char	**cpy;
 	void	*wall;
+	void	*floor;
 	void	*portal;
+	void	*potion;
 	void	*position;
 }	t_map;
 
@@ -66,7 +72,6 @@ typedef struct s_game
 	int			img_width;
 	void		*mlx;
 	void		*win;
-	void		*img;
 	t_player	player;
 	t_map		map;
 }	t_game;
@@ -79,6 +84,8 @@ void	ft_read_map(t_game *game, char *file);
 
 /* FT_MESSEG.C */
 void	ft_error(char *s);
+void	ft_win(t_game *game);
+void	ft_lose(t_game *game);
 
 /* CHECK_MAP.C */
 void	ft_check_map(t_game *game);
@@ -86,8 +93,18 @@ void	ft_check_map(t_game *game);
 /* CHECK_PATH.C */
 int	check_path(t_game *game);
 
-/* PUT_ELEM.C */
-void	put_elem(t_game *game, char *path_wall, char *path_floor);
+/* START_XPM.C */
+void	all_xpm(t_game *game);
+void	print_img(t_game *game, void *img, int i, int j);
+
+/* PRINT_MAP.C */
+void	print_map(t_game *game, char c);
+
+/* PRINT_STEPS.C */
+void	print_steps(t_game *game);
+
+/* CONTROLS.C */
+int	ft_key(int key, t_game *game);
 
 /* ----- UTILS ----- */
 /* FT_NO_NL.C */

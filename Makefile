@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+         #
+#    By: rodro <rodro@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:24:11 by rofuente          #+#    #+#              #
-#    Updated: 2023/05/10 17:03:04 by rofuente         ###   ########.fr        #
+#    Updated: 2023/05/10 19:18:34 by rodro            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,13 @@ RM	=	rm -f
 
 CC	=	gcc
 CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/ -I ./mlx
+MLX	=	./mlx/libmlx.a
 MLX_FLAGS	=	-Lmlx -lmlx -framework OpenGL -framework AppKit
 DEBUG	=	-g3 -fsanitize=address
 
 NAME	=	so_long
 
-SS	=	so_long.c read_map.c ft_messeg.c check_map.c check_path.c put_elem.c
+SS	=	so_long.c read_map.c ft_messeg.c check_map.c check_path.c start_xpm.c print_map.c print_steps.c controls.c
 UTILS	=	ft_no_nl.c ft_slen.c
 
 SRC_DIR	=	./src/
@@ -68,14 +69,14 @@ $(NAME): $(OBJ) $(LIBFT) $(MLX)
 	@echo "\n$(G)Basic library compiled!$(DEF_COLOR)-> $@\n"
 
 clean:
-	$(RM) $(OBJ)
+	@$(RM) $(OBJ)
 	@make clean -C libft
 	@make clean -C mlx
 	@rm -rf $(OBJ_DIR)
 	@echo "$(R)All .o files removed$(DEF_COLOR)\n"
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 	@make fclean -C libft
 	@make clean -C mlx
 	@rm -f $(OBJ_DIR)

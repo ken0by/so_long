@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:49:08 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/10 16:49:13 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/10 19:00:03 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	all_position(t_game *game)
+static void	all_position(t_game *game)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ void	all_position(t_game *game)
 	}
 }
 
-void	ft_cpymap(t_game *game)
+static void	ft_cpymap(t_game *game)
 {
 	int	i;
 	int	j;
@@ -52,7 +52,7 @@ void	ft_cpymap(t_game *game)
 	}
 }
 
-void	check_extention(char *file, char *ext)
+static void	check_extention(char *file, char *ext)
 {
 	int	i;
 	int	j;
@@ -68,7 +68,7 @@ void	check_extention(char *file, char *ext)
 	}
 }
 
-void	check_rectangular(t_game *game)
+static void	check_rectangular(t_game *game)
 {
 	if (ft_strlen(game->map.line) % game->map.width != 0)
 		ft_error("Map not rectangular\n");

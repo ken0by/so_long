@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:22:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/10 17:13:32 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/10 19:08:07 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+int	ft_close(t_game *game)
+{
+	mlx_destroy_window(game->mlx, game->win);
+	return (0);
+}
+
+static int	ft_loop(t_game *game)
+{
+	print_steps(game);
+	return (0);
+}
 
 static void	start_game(t_game *game, char *file)
 {
@@ -24,19 +36,8 @@ static void	start_game(t_game *game, char *file)
 		game->map.height * 110, "Save Pickle Rick!");
 	if (!game->win)
 		ft_error("Failure to load window\n");
-	mlx_loop(game->mlx);
-}
-
-static void	init_elements(t_game *game)
-{
-	char	*path_wall;
-	char	*path_floor;
-
-	path_wall = "../xpm/wall.xpm";
-	path_floor = "../xpm/floor.xpm";
-	game->img_height = 50;
-	game->img_width = 50;
-	put_elem(game, path_wall, path_floor);
+	all_xpm(game);
+	print_map(game, 's');
 }
 
 int	main(int argc, char **argv)
@@ -46,7 +47,10 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		start_game(&game, argv[1]);
-		init_elements(&game);
+		mlx_hook(game.win, DESTROY, 0, ft_close, &game);
+		mlx_key_hook(game.win, ft_key, &game);
+		mlx_loop_hook(game.mlx, &ft_loop, &game);
+		mlx_loop(game.mlx);
 	}
 
 	return (0);
