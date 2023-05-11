@@ -6,7 +6,7 @@
 /*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:49:08 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/10 19:00:03 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/11 14:15:22 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static void	all_position(t_game *game)
 {
 	int	i;
 
-	game->map.all_positions = 0;
+	game->map.all_potions = 0;
 	i = 0;
 	while (game->map.line[i])
 	{
 		if (game->map.line[i] == 'C')
-			game->map.all_positions++;
+			game->map.all_potions++;
 		i++;
 	}
 }

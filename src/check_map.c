@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:49:38 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/10 16:49:40 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/11 14:44:28 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	ft_check_walls(char *line, t_game *game)
 		if (i < game->map.width && line[i] != '1')
 			ft_error("Map isn't surrounded of walls\n");
 		else if ((i % game->map.width == 0 || i % game->map.width
-			== game->map.width - 1) && line[i] != '1')
+				== game->map.width - 1) && line[i] != '1')
 			ft_error("Map isn't surrounded of walls\n");
 		else if (i > (ft_slen(line) - game->map.width) && line[i] != '1')
 			ft_error("Map isn't surrounded of walls\n");

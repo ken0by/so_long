@@ -6,7 +6,7 @@
 /*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:22:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/10 19:08:07 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/11 14:42:17 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	start_game(t_game *game, char *file)
 	if (!game->mlx)
 		ft_error("Failed to open MLX\n");
 	game->win = mlx_new_window(game->mlx, game->map.width * 110,
-		game->map.height * 110, "Save Pickle Rick!");
+			game->map.height * 110, "Save Pickle Rick!");
 	if (!game->win)
 		ft_error("Failure to load window\n");
 	all_xpm(game);
@@ -52,6 +52,5 @@ int	main(int argc, char **argv)
 		mlx_loop_hook(game.mlx, &ft_loop, &game);
 		mlx_loop(game.mlx);
 	}
-
 	return (0);
 }

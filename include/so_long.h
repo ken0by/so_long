@@ -6,7 +6,7 @@
 /*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/10 19:43:10 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/11 14:41:05 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_map
 {
 	int		height;
 	int		width;
-	int		all_positions;
+	int		all_potions;
 	int		n_position;
 	char	*line;
 	char	**cpy;
@@ -91,7 +91,7 @@ void	ft_lose(t_game *game);
 void	ft_check_map(t_game *game);
 
 /* CHECK_PATH.C */
-int	check_path(t_game *game);
+int		check_path(t_game *game);
 
 /* START_XPM.C */
 void	all_xpm(t_game *game);
@@ -104,7 +104,7 @@ void	print_map(t_game *game, char c);
 void	print_steps(t_game *game);
 
 /* CONTROLS.C */
-int	ft_key(int key, t_game *game);
+int		ft_key(int key, t_game *game);
 
 /* ----- UTILS ----- */
 /* FT_NO_NL.C */
@@ -112,7 +112,7 @@ char	*ft_strdup_no_nl(const char *s1);
 char	*ft_strjoin_no_nl(char *s1, char *s2);
 
 /* FT_SLEN.C */
-int	ft_slen(char *s);
+int		ft_slen(char *s);
 
 /* ---------- COLOR FONT ---------- */
 # define BLACK   "\x1B[30m"

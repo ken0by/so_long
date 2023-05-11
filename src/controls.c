@@ -11,7 +11,7 @@ static void	press_w(t_game *game)
 	if (game->map.line[i - game->map.width] == 'C')
 		game->map.n_position++;
 	if (game->map.line[i - game->map.width] == 'E'
-		&& game->map.n_position == game->map.all_positions)
+		&& game->map.n_position == game->map.all_potions)
 		ft_win(game);
 	if (game->map.line[i - game->map.width] != '1'
 		&& game->map.line[i - game->map.width] != 'E')
@@ -35,7 +35,7 @@ static void	press_s(t_game *game)
 	if (game->map.line[i + game->map.width] == 'C')
 		game->map.n_position++;
 	if (game->map.line[i + game->map.width] == 'E'
-		&& game->map.n_position == game->map.all_positions)
+		&& game->map.n_position == game->map.all_potions)
 		ft_win(game);
 	if (game->map.line[i + game->map.width] != '1'
 		&& game->map.line[i + game->map.width] != 'E')
@@ -59,7 +59,7 @@ static void	press_d(t_game *game)
 	if (game->map.line[i + 1] == 'C')
 		game->map.n_position++;
 	if (game->map.line[i + 1] == 'E'
-		&& game->map.n_position == game->map.all_positions)
+		&& game->map.n_position == game->map.all_potions)
 		ft_win(game);
 	if (game->map.line[i + 1] != '1' && game->map.line[i + 1] != 'E')
 	{
@@ -82,7 +82,7 @@ static void	press_a(t_game *game)
 	if (game->map.line[i - 1] == 'C')
 		game->map.n_position++;
 	if (game->map.line[i - 1] == 'E'
-		&& game->map.n_position == game->map.all_positions)
+		&& game->map.n_position == game->map.all_potions)
 		ft_win(game);
 	if (game->map.line[i - 1] != '1' && game->map.line[i + 1] != 'E')
 	{

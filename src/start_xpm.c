@@ -6,7 +6,7 @@
 /*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:49:18 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/10 19:03:01 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/11 14:43:59 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static void	*start_xpm(t_game *game, char *str)
 	void	*img;
 
 	r = ft_strjoin(XPM_PATH, str);
-	img = mlx_xpm_file_to_image(game->mlx, r, &game->img_width, &game->img_height);
+	img = mlx_xpm_file_to_image(game->mlx, r,
+			&game->img_width, &game->img_height);
 	if (!img)
 		ft_error("Failed to load XPM\n");
 	free (r);
@@ -49,5 +50,5 @@ void	all_xpm(t_game *game)
 
 void	print_img(t_game *game, void *img, int i, int j)
 {
-	mlx_put_image_to_window(game->mlx, game->win,img, i, j);
+	mlx_put_image_to_window(game->mlx, game->win, img, i, j);
 }

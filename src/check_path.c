@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:49:28 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/10 16:49:32 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/11 14:45:33 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	check_move(char **cpy, int i, int j)
 
 static void	fill(t_game *game, int i, int j)
 {
-	if(game->map.cpy[i][j] == '0' || game->map.cpy[i][j] == 'C')
+	if (game->map.cpy[i][j] == '0' || game->map.cpy[i][j] == 'C')
 		game->map.cpy[i][j] = 'P';
 }
 
@@ -60,9 +60,12 @@ static int	check_scape(t_game *game)
 		while (j < game->map.width)
 		{
 			if ((game->map.cpy[i][j] == 'E' && game->map.cpy[i + 1][j] == 'P')
-				|| (game->map.cpy[i][j] == 'E' && game->map.cpy[i - 1][j] == 'P')
-				|| (game->map.cpy[i][j] == 'E' && game->map.cpy[i][j + 1] == 'P')
-				|| (game->map.cpy[i][j] == 'E' && game->map.cpy[i][j - 1] == 'P'))
+				|| (game->map.cpy[i][j] == 'E'
+				&& game->map.cpy[i - 1][j] == 'P')
+				|| (game->map.cpy[i][j] == 'E'
+				&& game->map.cpy[i][j + 1] == 'P')
+				|| (game->map.cpy[i][j] == 'E'
+				&& game->map.cpy[i][j - 1] == 'P'))
 				return (1);
 			j++;
 		}

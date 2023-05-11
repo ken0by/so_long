@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:16:58 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/09 13:29:06 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/11 14:40:22 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	check_newline(char *s, int y)
 
 char	*ft_fill_s(char *s, char *b)
 {
-	int	i;
-	char *a;
+	int		i;
+	char	*a;
 
 	a = NULL;
 	if (!s)
