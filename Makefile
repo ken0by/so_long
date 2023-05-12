@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rodro <rodro@student.42.fr>                +#+  +:+       +#+         #
+#    By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:24:11 by rofuente          #+#    #+#              #
-#    Updated: 2023/05/11 13:53:36 by rodro            ###   ########.fr        #
+#    Updated: 2023/05/12 12:30:25 by rofuente         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ DEBUG	=	-g3 -fsanitize=address
 
 NAME	=	so_long
 
-SS	=	so_long.c read_map.c ft_messeg.c check_map.c check_path.c start_xpm.c print_map.c print_steps.c controls.c
+SS	=	so_long.c read_map.c ft_messeg.c check_map.c check_path.c start_xpm.c print_map.c print_steps.c controls.c ft_free.c
 UTILS	=	ft_no_nl.c ft_slen.c
 
 SRC_DIR	=	./src/
@@ -65,7 +65,7 @@ $(OBJ_DIR)%.o:$(SRCU_DIR)%.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJ) $(LIBFT) $(MLX)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) $(MLX_FLAGS) $(DEBUG) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
 	@echo "\n$(G)Basic library compiled!$(DEF_COLOR)-> $@\n"
 
 clean:

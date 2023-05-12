@@ -2,7 +2,7 @@ LIB = ar rcs
 RM = rm -f
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I ./include -I ./ft_printf/include -I ./gnl/include -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -I ./include -I ./ft_printf/include -I ./gnl/include 
 
 NAME = libft.a
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/12 11:28:23 by rofuente          #+#    #+#             */
+/*   Updated: 2023/05/12 11:53:48 by rofuente         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
 static void	print_elements(t_game *game, int i, int j, int k)
@@ -7,7 +19,7 @@ static void	print_elements(t_game *game, int i, int j, int k)
 		print_img(game, game->map.wall, j * 110, i * 110);
 	else if (game->map.line[k] == 'E')
 	{
-		if (game->map.n_position == game->map.all_potions)
+		if (game->map.n_potions == game->map.all_potions)
 			print_img(game, game->map.portal, j * 110, i * 110);
 		else
 			print_img(game, game->map.wall, j * 110, i * 110);

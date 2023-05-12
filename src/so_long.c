@@ -3,18 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:22:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/11 14:42:17 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/12 12:36:09 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+static void	ft_free_lst(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i <= game->map.height)
+	{
+		free (game->map.cpy[i]);
+		i++;
+	}
+	free (game->map.cpy);
+}
+
 int	ft_close(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
+	ft_free_lst(game);
 	return (0);
 }
 
@@ -27,7 +41,7 @@ static int	ft_loop(t_game *game)
 static void	start_game(t_game *game, char *file)
 {
 	game->player.steps = 0;
-	game->map.n_position = 0;
+	game->map.n_potions = 0;
 	ft_read_map(game, file);
 	game->mlx = mlx_init();
 	if (!game->mlx)
@@ -40,10 +54,16 @@ static void	start_game(t_game *game, char *file)
 	print_map(game, 's');
 }
 
+void	ft_leaks(void)
+{
+	system("leaks so_long");
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
 
+	atexit(ft_leaks);
 	if (argc == 2)
 	{
 		start_game(&game, argv[1]);
@@ -52,5 +72,6 @@ int	main(int argc, char **argv)
 		mlx_loop_hook(game.mlx, &ft_loop, &game);
 		mlx_loop(game.mlx);
 	}
+	ft_free_matrix(&game);
 	return (0);
 }

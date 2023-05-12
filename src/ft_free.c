@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_steps.c                                      :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 11:28:45 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/12 11:28:47 by rofuente         ###   ########.fr       */
+/*   Created: 2023/05/12 12:30:13 by rofuente          #+#    #+#             */
+/*   Updated: 2023/05/12 12:35:49 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void	ft_steps(t_game *game)
+void	ft_free_close(char *line, int fd)
 {
-	ft_putstr_fd("Steps: ", 1);
-	ft_putnbr_fd(game->player.steps, 1);
-	ft_putchar_fd('\n', 1);
-	game->player.steps_flag = 0;
+	free (line);
+	close (fd);
 }
 
-static void	win_steps(t_game *game)
+void	ft_free_matrix(t_game *game)
 {
-	char	*s;
+	int	i;
 
-	s = ft_itoa(game->player.steps);
-	mlx_string_put(game->mlx, game->win, 33, 23, 0xFFFFFF, s);
-	free (s);
-}
-
-void	print_steps(t_game *game)
-{
-	if (game->player.steps_flag)
-		ft_steps(game);
-	win_steps(game);
+	i = 0;
+	while (i < game->map.height)
+	{
+		free (game->map.cpy[i]);
+		i++;
+	}
+	free (game->map.cpy);
 }

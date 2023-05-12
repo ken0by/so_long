@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_xpm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:49:18 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/11 14:43:59 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/12 12:27:22 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static void	*start_xpm(t_game *game, char *str)
 
 static void	p_xpm(t_game *game)
 {
-	game->player.player_front = start_xpm(game, "front_stop.xpm");
-	game->player.player_back = start_xpm(game, "back_stop.xpm");
-	game->player.player_right = start_xpm(game, "right_stop.xpm");
-	game->player.player_left = start_xpm(game, "left_stop.xpm");
+	game->player.player_front = start_xpm(game, "front_walk.xpm");
+	game->player.player_back = start_xpm(game, "back_walk.xpm");
+	game->player.player_right = start_xpm(game, "right_walk.xpm");
+	game->player.player_left = start_xpm(game, "left_walk.xpm");
 }
 
 static void	map_xpm(t_game *game)

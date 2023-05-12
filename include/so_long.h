@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/11 14:41:05 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/12 12:35:54 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_player
 	int		steps;
 	int		steps_flag;
 	int		pos;
+	void	*player_start;
 	void	*player_front;
 	void	*player_back;
 	void	*player_right;
@@ -56,7 +57,7 @@ typedef struct s_map
 	int		height;
 	int		width;
 	int		all_potions;
-	int		n_position;
+	int		n_potions;
 	char	*line;
 	char	**cpy;
 	void	*wall;
@@ -79,6 +80,9 @@ typedef struct s_game
 /* ---------- FUNCIONES ---------- */
 
 /* ----- SRC ----- */
+/* SO_LONG.C */
+int	ft_close(t_game *game);
+
 /* READ_MAP.C */
 void	ft_read_map(t_game *game, char *file);
 
@@ -105,6 +109,10 @@ void	print_steps(t_game *game);
 
 /* CONTROLS.C */
 int		ft_key(int key, t_game *game);
+
+/* FT_FREE.C */
+void	ft_free_close(char *line, int fd);
+void	ft_free_matrix(t_game *game);
 
 /* ----- UTILS ----- */
 /* FT_NO_NL.C */

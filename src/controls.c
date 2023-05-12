@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   controls.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/12 11:28:32 by rofuente          #+#    #+#             */
+/*   Updated: 2023/05/12 12:24:37 by rofuente         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
 static void	press_w(t_game *game)
@@ -9,9 +21,9 @@ static void	press_w(t_game *game)
 		if (game->map.line[i] == 'P')
 			break ;
 	if (game->map.line[i - game->map.width] == 'C')
-		game->map.n_position++;
+		game->map.n_potions++;
 	if (game->map.line[i - game->map.width] == 'E'
-		&& game->map.n_position == game->map.all_potions)
+		&& game->map.n_potions == game->map.all_potions)
 		ft_win(game);
 	if (game->map.line[i - game->map.width] != '1'
 		&& game->map.line[i - game->map.width] != 'E')
@@ -33,9 +45,9 @@ static void	press_s(t_game *game)
 		if (game->map.line[i] == 'P')
 			break ;
 	if (game->map.line[i + game->map.width] == 'C')
-		game->map.n_position++;
+		game->map.n_potions++;
 	if (game->map.line[i + game->map.width] == 'E'
-		&& game->map.n_position == game->map.all_potions)
+		&& game->map.n_potions == game->map.all_potions)
 		ft_win(game);
 	if (game->map.line[i + game->map.width] != '1'
 		&& game->map.line[i + game->map.width] != 'E')
@@ -57,9 +69,9 @@ static void	press_d(t_game *game)
 		if (game->map.line[i] == 'P')
 			break ;
 	if (game->map.line[i + 1] == 'C')
-		game->map.n_position++;
+		game->map.n_potions++;
 	if (game->map.line[i + 1] == 'E'
-		&& game->map.n_position == game->map.all_potions)
+		&& game->map.n_potions == game->map.all_potions)
 		ft_win(game);
 	if (game->map.line[i + 1] != '1' && game->map.line[i + 1] != 'E')
 	{
@@ -80,11 +92,11 @@ static void	press_a(t_game *game)
 		if (game->map.line[i] == 'P')
 			break ;
 	if (game->map.line[i - 1] == 'C')
-		game->map.n_position++;
+		game->map.n_potions++;
 	if (game->map.line[i - 1] == 'E'
-		&& game->map.n_position == game->map.all_potions)
+		&& game->map.n_potions == game->map.all_potions)
 		ft_win(game);
-	if (game->map.line[i - 1] != '1' && game->map.line[i + 1] != 'E')
+	if (game->map.line[i - 1] != '1' && game->map.line[i - 1] != 'E')
 	{
 		game->map.line[i] = '0';
 		game->map.line[i - 1] = 'P';
@@ -98,7 +110,7 @@ int	ft_key(int key, t_game *game)
 {
 	if (key == KEY_ESC)
 	{
-		mlx_destroy_window(game->mlx, game->win);
+		ft_close(game);
 		exit(EXIT_SUCCESS);
 	}
 	if (key == KEY_W || key == ARROW_UP)
