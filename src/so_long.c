@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:22:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/15 21:27:32 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/16 16:12:17 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void	ft_free_lst(t_game *game)
+int	ft_close(t_game *game)
 {
-	int	i;
+	int i;
 
+	mlx_destroy_window(game->mlx, game->win);
 	i = 0;
 	while (i < game->map.height)
 	{
@@ -24,21 +25,6 @@ static void	ft_free_lst(t_game *game)
 	}
 	free (game->map.cpy);
 	free (game->map.line);
-}
-
-int	ft_close(t_game *game)
-{
-	//int i;
-
-	mlx_destroy_window(game->mlx, game->win);
-	/* i = 0;
-	while (i < game->map.height)
-	{
-		ft_printf("%p\n", game->map.cpy[i]);
-		i++;
-	}
-	ft_printf("%p\n", game->map.line); */
-	ft_free_lst(game);
 	return (0);
 }
 
@@ -82,6 +68,5 @@ int	main(int argc, char **argv)
 		mlx_loop_hook(game.mlx, &ft_loop, &game);
 		mlx_loop(game.mlx);
 	}
-	//ft_free_matrix(&game);
 	return (0);
 }
