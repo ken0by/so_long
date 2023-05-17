@@ -6,7 +6,7 @@
 /*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/15 20:55:27 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/17 18:26:15 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	ft_free_matrix(t_game *game);
 
 /* ----- UTILS ----- */
 /* FT_NO_NL.C */
-char	*ft_strdup_no_nl(const char *s1);
+char	*ft_strdup_no_nl(char *s1);
 char	*ft_strjoin_no_nl(char *s1, char *s2);
 
 /* FT_SLEN.C */

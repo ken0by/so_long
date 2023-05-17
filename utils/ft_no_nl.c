@@ -6,13 +6,13 @@
 /*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:49:47 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/12 20:50:09 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/17 18:26:05 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-char	*ft_strdup_no_nl(const char *s1)
+char	*ft_strdup_no_nl(char *s1)
 {
 	char	*dst;
 	int		x;
@@ -36,6 +36,7 @@ char	*ft_strdup_no_nl(const char *s1)
 		x++;
 	}
 	dst[j] = '\0';
+	free (s1);
 	return (dst);
 }
 
@@ -64,5 +65,6 @@ char	*ft_strjoin_no_nl(char *s1, char *s2)
 			y++;
 	}
 	r[x] = '\0';
+	free (s1);
 	return (r);
 }

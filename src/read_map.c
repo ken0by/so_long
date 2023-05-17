@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:49:08 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/16 17:34:56 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/17 18:30:54 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void	ft_read_map(t_game *game, char *file)
 	game->map.height = 0;
 	game->map.width = ft_strlen(line) - 1;
 	game->map.line = ft_strdup_no_nl(line);
-	free (line);
 	while (line)
 	{
 		line = get_next_line(fd);
@@ -98,6 +97,7 @@ void	ft_read_map(t_game *game, char *file)
 		check_rectangular(game);
 		game->map.height++;
 	}
+	close (fd);
 	ft_cpymap(game);
 	all_potions(game);
 	ft_check_map(game);
