@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rodro <rodro@student.42.fr>                +#+  +:+       +#+         #
+#    By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:24:11 by rofuente          #+#    #+#              #
-#    Updated: 2023/05/17 18:32:32 by rodro            ###   ########.fr        #
+#    Updated: 2023/05/18 16:33:10 by rofuente         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ LIB	=	ar rcs
 RM	=	rm -f
 
 CC	=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/ -I ./mlx
+CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/
 MLX	=	./mlx/libmlx.a
 MLX_FLAGS	=	-Lmlx -lmlx -framework OpenGL -framework AppKit
 DEBUG	=	-g3 -fsanitize=address
@@ -34,8 +34,8 @@ OBJ	=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
 LIBFT_PATH = libft/
 LIBFT = $(LIBFT_PATH)libft.a
 
-MLX_PATH = mlx/
-MLX = $(MLX_PATH)libmlx.a
+# MLX_PATH = mlx/
+# MLX = $(MLX_PATH)libmlx.a
 
 ##########COLORES##########
 DEF_COLOR = \033[0;39m
@@ -52,33 +52,33 @@ END = \033[0m
 all: $(OBJ_DIR) $(NAME)
 
 $(LIBFT) : $(LIBFT_PATH)
-	@make -C $(LIBFT_PATH)
+	@make -sC $(LIBFT_PATH)
 
-$(MLX) : $(MLX_PATH)
-	@make -C $(MLX_PATH)
+# $(MLX) : $(MLX_PATH)
+# 	@make -sC $(MLX_PATH)
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 $(OBJ_DIR)%.o:$(SRC_DIR)%.c
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 $(OBJ_DIR)%.o:$(SRCU_DIR)%.c
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(NAME): $(OBJ) $(LIBFT) $(MLX)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
+$(NAME): $(OBJ) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 	@echo "\n$(G)Basic library compiled!$(DEF_COLOR)-> $@\n"
 
 clean:
 	@$(RM) $(OBJ)
-	@make clean -C libft
-	@make clean -C mlx
+	@make clean -sC libft
+	@make clean -sC mlx
 	@rm -rf $(OBJ_DIR)
 	@echo "$(R)All .o files removed$(DEF_COLOR)\n"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@make fclean -C libft
-	@make clean -C mlx
+	@make fclean -sC libft
+	@make clean -sC mlx
 	@rm -f $(OBJ_DIR)
 	@echo "$(R)Library .a file removed$(DEF_COLOR)\n"
 

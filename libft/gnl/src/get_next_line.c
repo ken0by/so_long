@@ -5,137 +5,129 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/08 14:17:16 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/09 13:26:50 by rofuente         ###   ########.fr       */
+/*   Created: 2022/10/18 18:23:09 by dlopez-s          #+#    #+#             */
+/*   Updated: 2023/05/18 17:14:55 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/get_next_line.h"
 
-char	*ft_read(int fd, char *s)
+static char	*ft_gnl_strjoin(char *static_buffer, char *buf)
 {
-	char	*b;
-	int		x;
+	char	*str;
+	int		size_static_buffer;
+	int		size_buf;
+	int		i;
 
-	x = 1;
-	while (x != 0)
+	size_static_buffer = ft_strlen(static_buffer);
+	size_buf = ft_strlen(buf);
+	if (static_buffer == 0)
 	{
-		b = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-		if (!b)
-			return (NULL);
-		x = (int)read(fd, b, BUFFER_SIZE);
-		if (x == -1)
-			return (ft_free(s, b));
-		if (x == 0)
+		static_buffer = (char *)malloc(1 * sizeof(char));
+		static_buffer[0] = '\0';
+	}
+	if (static_buffer == 0 && buf == 0)
+		return (0);
+	str = malloc(sizeof(char) * (size_static_buffer + size_buf + 1));
+	i = -1;
+	while (static_buffer[++i] != '\0')
+		str[i] = static_buffer[i];
+	while (*buf != '\0')
+		str[i++] = *buf++;
+	str[size_static_buffer + size_buf] = '\0';
+	free(static_buffer);
+	return (str);
+}
+
+static char	*how_to_read(int fd, char *static_buffer)
+{
+	char	*buf;
+	int		button;
+
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (buf == 0)
+		return (0);
+	button = 1;
+	while (button != 0 && !ft_strchr_gnl(static_buffer, '\n'))
+	{
+		button = read(fd, buf, BUFFER_SIZE);
+		if (button == -1)
 		{
-			free (b);
-			break ;
+			free(buf);
+			return (0);
 		}
-		b[x] = '\0';
-		s = ft_fill_s(s, b);
-		if (!s)
-			return (NULL);
-		if (check_newline(s, 0) == 1)
-			break ;
+		buf[button] = 0;
+		static_buffer = ft_gnl_strjoin(static_buffer, buf);
 	}
-	return (s);
+	free(buf);
+	return (static_buffer);
 }
 
-int	s_line(char *s, char **line)
+static char	*put_line(char *static_buffer)
 {
-	int	x;
+	char	*str;
+	int		i;
 
-	*line = ft_newline(s, line);
-	if (!*line)
-		return (1);
-	x = 0;
-	while (s[x])
+	i = 0;
+	if (static_buffer[i] == 0)
+		return (0);
+	while (static_buffer[i] != 0 && static_buffer[i] != '\n')
+		i++;
+	str = (char *)malloc(sizeof(char) * (i + 2));
+	if (str == 0)
+		return (0);
+	i = 0;
+	while (static_buffer[i] != 0 && static_buffer[i] != '\n')
 	{
-		line[0][x] = s[x];
-		if (s[x] == '\n')
-		{
-			x++;
-			break ;
-		}
-		x++;
+		str[i] = static_buffer[i];
+		i++;
 	}
-	line[0][x] = '\0';
-	return (0);
+	if (static_buffer[i] == '\n')
+	{
+		str[i] = static_buffer[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
 
-int	ft_clean2(char **s, char *aux, int x)
+static char	*new_buffer(char *static_buffer)
 {
-	int	y;
-	int	flag;
+	char	*str;
+	int		i;
+	int		j;
 
-	y = 0;
-	x++;
-	while (s[0][x])
+	i = 0;
+	while (static_buffer[i] != 0 && static_buffer[i] != '\n')
+		i++;
+	if (static_buffer[i] == 0)
 	{
-		aux[y++] = s[0][x++];
-		flag = 1;
-	}
-	if (flag == 1)
-	{
-		aux[y] = '\0';
-		free(s[0]);
-		s[0] = ft_copy(s[0], aux);
-	}
-	else
-	{
-		free(aux);
-		free(s[0]);
-		s[0] = NULL;
-	}
-	if (!s)
-		free(s);
-	return (!s);
-}
-
-int	ft_clean(char **s)
-{
-	char	*aux;
-	int		x;
-
-	x = 0;
-	while (s[0][x] != '\n' && s[0][x])
-		x++;
-	if (s[0][x] == '\0')
-	{
-		free(*s);
-		*s = NULL;
+		free(static_buffer);
 		return (0);
 	}
-	else
-		aux = malloc(sizeof(char) * (check_newline(s[0], 1) - x) + 1);
-	if (!aux)
-		return (1);
-	if (ft_clean2(s, aux, x) == 1)
-		return (1);
-	return (0);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(static_buffer) - i + 1));
+	if (str == 0)
+		return (0);
+	i++;
+	j = 0;
+	while (static_buffer[i] != 0)
+		str[j++] = static_buffer[i++];
+	str[j] = '\0';
+	free(static_buffer);
+	return (str);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*s;
-	char		*line;
-	int			x;
+	static char			*static_buffer;
+	char				*line;
 
-	line = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-	{
-		free (s);
-		s = NULL;
-		return (NULL);
-	}
-	s = ft_read(fd, s);
-	if (!s)
-		return (ft_free(s, NULL));
-	x = s_line(s, &line);
-	if (x == 1)
-		return (ft_free(line, NULL));
-	x = ft_clean(&s);
-	if (x == 1)
-		return (ft_free (line, NULL));
+	if (fd < 0 || fd > ARRAY_MAX || BUFFER_SIZE < 1)
+		return (0);
+	static_buffer = how_to_read(fd, static_buffer);
+	if (static_buffer == 0)
+		return (0);
+	line = put_line(static_buffer);
+	static_buffer = new_buffer(static_buffer);
 	return (line);
 }

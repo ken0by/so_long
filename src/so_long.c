@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:22:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/18 12:05:00 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:18:55 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_close(t_game *game)
 {
-	int i;
+	int	i;
 
 	mlx_destroy_window(game->mlx, game->win);
 	i = 0;
@@ -50,16 +50,10 @@ static void	start_game(t_game *game, char *file)
 	print_map(game, 's');
 }
 
-void	ft_leaks(void)
-{
-	system("leaks so_long");
-}
-
 int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	atexit(ft_leaks);
 	if (argc == 2)
 	{
 		start_game(&game, argv[1]);
