@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/18 16:32:22 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/18 18:50:51 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct s_game
 
 /* ----- SRC ----- */
 /* SO_LONG.C */
-int	ft_close(t_game *game);
+int		ft_close(t_game *game);
 
 /* READ_MAP.C */
 void	ft_read_map(t_game *game, char *file);
@@ -125,6 +125,5 @@ int		ft_slen(char *s);
 # define RED     "\x1b[31m"
 # define GREEN   "\x1b[32m"
 # define RESET   "\x1b[0m"
-
 
 #endif

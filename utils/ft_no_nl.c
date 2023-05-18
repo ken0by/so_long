@@ -3,79 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_no_nl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:49:47 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/18 17:09:04 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/18 18:50:18 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-/* char	*ft_strdup_no_nl(char *s1)
-{
-	char	*dst;
-	int		x;
-	int		j;
-
-	dst = malloc(sizeof(char) * ft_strlen((char *)s1) + 1);
-	if (!dst)
-	{
-		free (dst);
-		return (0);
-	}
-	x = 0;
-	j = 0;
-	while (s1[x])
-	{
-		if (s1[x] != '\n')
-		{
-			dst[j] = s1[x];
-			j++;
-		}
-		x++;
-	}
-	dst[j] = '\0';
-	//free (s1);
-	return (dst);
-}
-
-char	*ft_strjoin_no_nl(char *s1, char *s2)
-{
-	char	*r;
-	int		x;
-	int		y;
-
-	if(!s1 && !s2)
-		return (NULL);
-	else if (!s1 || !s2)
-	{
-		r =ft_strdup_no_nl(s1);
-		free (s1);
-		free (s2);
-		return (r);
-	}
-	r = malloc(sizeof(char) * (ft_strlen((char *)s1)
-				+ ft_strlen((char *)s2)) + 1);
-	if (!r)
-		return (NULL);
-	x = 0;
-	y = 0;
-	while (s1[y])
-		r[x++] = s1[y++];
-	y = 0;
-	while (s2[y])
-	{
-		if (s2[y] != '\n')
-			r[x++] = s2[y++];
-		else
-			y++;
-	}
-	r[x] = '\0';
-	free (s1);
-	free (s2);
-	return (r);
-} */
 
 char	*ft_strdup_no_nl(char *s)
 {
