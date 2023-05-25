@@ -6,11 +6,17 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:22:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/18 17:18:55 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:06:02 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+static int	red_cross(t_game *game)
+{
+	mlx_destroy_window(game->mlx, game->win);
+	exit (0);
+}
 
 int	ft_close(t_game *game)
 {
@@ -57,7 +63,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		start_game(&game, argv[1]);
-		mlx_hook(game.win, DESTROY, 0, ft_close, &game);
+		mlx_hook(game.win, DESTROY, 0, red_cross, &game);
 		mlx_key_hook(game.win, ft_key, &game);
 		mlx_loop_hook(game.mlx, &ft_loop, &game);
 		mlx_loop(game.mlx);

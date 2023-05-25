@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/18 18:50:51 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/18 20:20:24 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "../libft/include/libft.h"
 # include "../libft/ft_printf/include/ft_printf.h"
 # include "../libft/gnl/include/get_next_line.h"
-/* # include "../mlx/mlx.h" */
 # include <mlx.h>
 # include <stdlib.h>
 # include <unistd.h>

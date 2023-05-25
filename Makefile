@@ -6,7 +6,7 @@
 #    By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:24:11 by rofuente          #+#    #+#              #
-#    Updated: 2023/05/18 16:33:10 by rofuente         ###   ########.fr        #
+#    Updated: 2023/05/25 15:04:10 by rofuente         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ RM	=	rm -f
 CC	=	gcc
 CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/
 MLX	=	./mlx/libmlx.a
-MLX_FLAGS	=	-Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX_FLAGS	=	-lmlx -framework OpenGL -framework AppKit
 DEBUG	=	-g3 -fsanitize=address
 
 NAME	=	so_long
