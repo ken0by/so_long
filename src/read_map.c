@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:49:08 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/18 17:16:58 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:50:37 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static void	ft_cpymap(t_game *game)
 		game->map.cpy[i][j] = '\0';
 		i++;
 	}
+	all_potions(game);
+	ft_check_map(game);
 }
 
 static void	check_extention(char *file, char *ext)
@@ -86,6 +88,7 @@ void	ft_read_map(t_game *game, char *file)
 	line = get_next_line(fd);
 	if (!line)
 		ft_error("Empty map\n");
+	check_line(line, fd);
 	game->map.height = 0;
 	game->map.width = ft_strlen(line) - 1;
 	game->map.line = ft_strdup_no_nl(line);
@@ -99,6 +102,4 @@ void	ft_read_map(t_game *game, char *file)
 	}
 	close (fd);
 	ft_cpymap(game);
-	all_potions(game);
-	ft_check_map(game);
 }
