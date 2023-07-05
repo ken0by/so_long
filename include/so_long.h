@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/06/08 15:50:51 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:21:36 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_map
 	int		width;
 	int		all_potions;
 	int		n_potions;
+	int		len;
 	char	*line;
 	char	**cpy;
 	void	*wall;

@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:49:08 by rofuente          #+#    #+#             */
-/*   Updated: 2023/06/08 15:50:37 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:22:36 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ static void	check_extention(char *file, char *ext)
 
 static void	check_rectangular(t_game *game)
 {
-	if (ft_strlen(game->map.line) % game->map.width != 0)
+	if (game->map.len == -1)
+		return ;
+	if (game->map.len != game->map.width)
 		ft_error("Map not rectangular\n");
 }
 
@@ -96,6 +98,7 @@ void	ft_read_map(t_game *game, char *file)
 	while (line)
 	{
 		line = get_next_line(fd);
+		game->map.len = (int)ft_strlen(line) - 1;
 		game->map.line = ft_strjoin_no_nl(game->map.line, line);
 		check_rectangular(game);
 		game->map.height++;
