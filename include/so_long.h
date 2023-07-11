@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:27:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/07/05 15:21:36 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/07/11 15:28:19 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	print_map(t_game *game, char c);
 
 /* PRINT_STEPS.C */
 void	print_steps(t_game *game);
-void	check_line(char *line, int fd);
+void	check_line(char **line, int fd);
 
 /* CONTROLS.C */
 int		ft_key(int key, t_game *game);

@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 11:28:45 by rofuente          #+#    #+#             */
-/*   Updated: 2023/06/08 15:50:43 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/07/11 15:27:48 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void	print_steps(t_game *game)
 	win_steps(game);
 }
 
-void	check_line(char *line, int fd)
+void	check_line(char **line, int fd)
 {
-	if (line[0] == '\n')
+	if ((*line)[0] == '\n')
 	{
-		free(line);
-		line = get_next_line(fd);
+		free(*line);
+		*line = get_next_line(fd);
 	}
 }
