@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:22:51 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/25 15:06:02 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:27:56 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
+	if (argc < 2)
+		ft_error("Requieres map\n");
 	if (argc == 2)
 	{
 		start_game(&game, argv[1]);

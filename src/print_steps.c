@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 11:28:45 by rofuente          #+#    #+#             */
-/*   Updated: 2023/07/11 15:27:48 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:24:58 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,10 @@ void	print_steps(t_game *game)
 	win_steps(game);
 }
 
-void	check_line(char **line, int fd)
+void	check_map(char *line)
 {
-	if ((*line)[0] == '\n')
-	{
-		free(*line);
-		*line = get_next_line(fd);
-	}
+	if (!line)
+		ft_error("Empty map\n");
+	if (line[0] == '\n')
+		ft_error("First line of map is empty\n");
 }

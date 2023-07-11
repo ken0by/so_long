@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:49:08 by rofuente          #+#    #+#             */
-/*   Updated: 2023/07/11 15:27:32 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:22:47 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,7 @@ void	ft_read_map(t_game *game, char *file)
 	if (fd <= 0)
 		ft_error("Failed to open file\n");
 	line = get_next_line(fd);
-	if (!line)
-		ft_error("Empty map\n");
-	check_line(&line, fd);
+	check_map(line);
 	game->map.height = 0;
 	game->map.width = ft_strlen(line) - 1;
 	game->map.line = ft_strdup_no_nl(line);
